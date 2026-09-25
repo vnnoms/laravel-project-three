@@ -65,7 +65,7 @@ document.querySelectorAll('.section-head').forEach(el => dividerObserver.observe
 
 /* ---------- Gallery lightbox ----------*/
 
-const eras = [
+/* const eras = [
   {
     label: '2019 — Women Paris Media',
     images: [
@@ -90,6 +90,7 @@ const eras = [
   { label: 'Unknown', images: ["images/.jpg"], narrative: "" },
   { label: 'Unknown',  images: ["images/.jpg"],  narrative: "" } 
 ];
+
 
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');

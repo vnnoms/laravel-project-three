@@ -12,4 +12,9 @@ class ActivityController extends Controller
         $activities = Activity::all();
         return view('index', compact('activities'));
     }
+
+    public function show(Activity $activity)
+    {
+        return view('show', compact('activity'));
+    }
 }

@@ -9,7 +9,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Stack+Sans+Headline:wght@200..700&family=Space+Grotesk:wght@400..600&display=swap" rel="stylesheet">
-        <script src="{{ asset('js/script.js') }}"></script>
         @fonts
 
         <!-- Styles / Scripts -->
@@ -71,18 +70,18 @@
     <section id="archive">
       <div class="section-head">
         <h2 class="section-title">Archive</h2>
-        <span class="label">Photoshoots Log</span>
+        <span class="label">Activity Log</span>
       </div>
-      <div class="archive-grid" id="archiveGrid">
-        @forelse ($activities as $activity)
-            <div class="archive-item" style="padding: 20px; color: #fff;">
-                <h3>{{ $activity->title }}</h3>
-                <p>{{ $activity->description }}</p>
-                <span>{{ $activity->activity_date->format('d M Y') }} — {{ $activity->status }}</span>
-            </div>
-        @empty
-            <div class="archive-item"><span>No upcoming activities.</span></div>
-        @endforelse
+          <div class="archive-grid" id="archiveGrid">
+       @forelse($activities as $activity)
+          <a href="{{ route('activities.show', $activity->id) }}" class="archive-item" style="color: white;">
+              <h3>{{ $activity->title }}</h3>
+              <p>{{ $activity->description }}</p>
+              <span>{{ $activity->activity_date->format('d M Y') }} — {{ $activity->status }}</span>
+          </a>
+      @empty
+          <p>Belum ada aktivitas.</p>
+      @endforelse
     </div>
     </section>
 
@@ -108,9 +107,9 @@
     <button class="lightbox-close" id="lightboxClose">Close ✕</button>
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous session">‹</button>
     <div class="lightbox-frame">
-      <div class="lightbox-stage">
+      <!-- <div class="lightbox-stage">
         <img class="lightbox-img" id="lightboxImg" src="images/women-paris-media-archive/women-paris-media-archive.png" alt="">
-      </div>
+      </div> -->
       <div class="lightbox-thumbs" id="lightboxThumbs"></div>
       <div class="lightbox-meta">
         <span class="label lightbox-caption" id="lightboxCaption">2019 — Women Paris Media</span>
@@ -120,7 +119,5 @@
     </div>
     <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next session">›</button>
   </div>
-
-<script src="script.js"></script>
 </body>
 </html>
