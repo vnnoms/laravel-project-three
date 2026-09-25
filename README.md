@@ -56,3 +56,34 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Activity Manager — Laravel CRUD Portfolio
+
+Aplikasi manajemen aktivitas dan portofolio berbasis web yang dikembangkan menggunakan framework Laravel untuk memenuhi tugas praktikum Pemrograman Web (Modul 3).
+
+---
+
+## 🚀 Fitur Utama
+* **Manajemen CRUD Lengkap**: Fitur untuk menambah, melihat detail, mengubah, dan menghapus data aktivitas harian/portofolio.
+* **Validasi Terpusat (`Form Request`)**: Memastikan integritas data dan aturan bisnis (seperti panjang judul minimal 5 karakter dan batasan pilihan status) ditangani secara aman di sisi server.
+* **Fitur Filter Kegiatan**: Memungkinkan pengguna menyaring daftar aktivitas berdasarkan status progres (`Planned`, `On-going`, `Done`) secara dinamis.
+* **Arsitektur Bersih**: Menerapkan prinsip *Separation of Concerns* (pemisahan tanggung jawab yang jelas antara Controller, Form Request, Model, dan antarmuka Blade).
+
+---
+
+## 🛠️ Tech Stack
+* **Framework:** Laravel 
+* **Database:** MySQL / SQLite
+* **Styling:** Tailwind CSS
+* **Code Quality / Analysis:** Laravel Pint & SonarQube
+
+---
+
+## 📦 Cara Instalasi & Menjalankan Proyek
+
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal di komputer/laptopmu:
+
+1. **Clone Repository:**
+   ```bash
+   git clone [https://github.com/username/activity-manager.git](https://github.com/username/activity-manager.git)
+   cd activity-manager
