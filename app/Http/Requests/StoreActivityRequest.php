@@ -14,7 +14,7 @@ class StoreActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|min:5|max:100', 
             'description' => 'required|string',
             'activity_date' => 'required|date',
             'category' => 'required|string|max:100',

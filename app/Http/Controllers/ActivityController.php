@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
-use Illuminate\Http\Request;
+use App\Models\Activity; 
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
+use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
@@ -41,5 +41,11 @@ class ActivityController extends Controller
     public function edit(Activity $activity)
     {
         return view('edit', compact('activity'));
+    }
+
+    public function destroy(Activity $activity)
+    {
+        $activity->delete();
+        return redirect()->route('activities.index')->with('success', 'Activity has been deleted');
     }
 }

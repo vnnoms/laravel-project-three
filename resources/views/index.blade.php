@@ -69,7 +69,15 @@
 
     <section id="archive">
       <div class="section-head">
-        <h2 class="section-title">Archive</h2>
+        <div class="flex justify-between items-center mb-8">
+          <div>
+              <h1 class="text-4xl font-serif font-bold">Archive</h1>
+              <p class="text-sm text-zinc-500 mt-1">A curated log of development milestones and projects.</p>
+          </div>
+              <a href="{{ route('activities.create') }}" class="btn-add-activity">
+                  + Add New Activity
+              </a>
+          </div>
         <span class="label">Activity Log</span>
       </div>
           <div class="archive-grid" id="archiveGrid">

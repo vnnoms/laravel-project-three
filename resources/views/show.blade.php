@@ -19,12 +19,24 @@
         </div>
     </div>
 
-    <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('You sure you want to delete this?');">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="px-6 py-3 bg-red-600 text-white rounded text-sm font-semibold hover:bg-red-700 transition">
-        Delete Activity
-    </button>
-    </form>
+    <div class="flex items-center gap-4 pt-6 border-t border-zinc-200">
+            <a href="{{ route('activities.index') }}" class="text-xs font-medium text-zinc-600 hover:underline">
+                ← Back to Archive
+            </a>
+
+            <div class="flex items-center gap-3 ml-auto">
+                <a href="{{ route('activities.edit', $activity->id) }}" class="btn-edit">
+                    Edit Activity
+                </a>
+
+                <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus aktivitas ini?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg text-xs font-semibold hover:bg-red-700 transition">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
 </body>
 </html>
