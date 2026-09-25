@@ -3,10 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Activity;
 
 class ActivitySeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     public function run(): void
     {
         Activity::create([
