@@ -37,4 +37,9 @@ class ActivityController extends Controller
     {
         return view('create');
     }
+
+    public function edit(Activity $activity)
+    {
+        return view('edit', compact('activity'));
+    }
 }
