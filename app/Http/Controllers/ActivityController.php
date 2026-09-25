@@ -32,4 +32,9 @@ class ActivityController extends Controller
         $activity->update($request->validated());
         return redirect()->route('activities.index')->with('success', 'Aktivitas berhasil diperbarui!');
     }
+
+    public function create()
+    {
+        return view('create');
+    }
 }
