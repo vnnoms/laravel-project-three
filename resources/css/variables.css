@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    font-family: var(--serif), sans-serif;
+    background-color: var(--bg-dynamic);
+    color: var(--text-dynamic);
+    min-height: 100vh;
+    transition: background-color 0.8s ease, color 0.8s ease;
+    overflow-x: auto;
+
+    /* Anti-blok */
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}

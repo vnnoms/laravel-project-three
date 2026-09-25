@@ -1,0 +1,38 @@
+/*Color Variables*/
+:root {
+    --pure-white: #ffffff;
+    --pure-black: #000000;
+    --clouded-pearl: #cfcfd3;
+    --silver-slate: #8c8889;
+    --charcoal-ground: #1c1c1c;
+    --charcoal-line: #3a3a3a;
+
+    --bg-dynamic: var(--pure-white);
+    --box-dynamic: var(--clouded-pearl);
+    --text-dynamic: var(--pure-black);
+    --accent-dynamic: var(--silver-slate);
+
+    --serif: "Instrument Serif", serif;
+    --sans: "Stack Sans Headline", sans-serif;
+    --grotesk: "Space Grotesk", sans-serif;
+}
+
+/*Font Variables*/
+.instrument-serif-regular {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.instrument-serif-regular-italic {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.stack-sans-headline {
+  font-family: "Stack Sans Headline", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
