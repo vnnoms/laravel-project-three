@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateActivityRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true; 
+    }
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'activity_date' => 'required|date',
+            'category' => 'required|string|max:100',
+            'status' => 'required|string|in:Done,On-going,Planned',
+        ];
+    }
+}
