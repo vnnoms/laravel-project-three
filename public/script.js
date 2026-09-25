@@ -88,7 +88,7 @@ const eras = [
   { label: 'Unknown',   images: ["images/.jpg"],   narrative: "" },
   { label: 'Unknown',  images: ["images/.jpg"],  narrative: "" },
   { label: 'Unknown', images: ["images/.jpg"], narrative: "" },
-  { label: 'Unknown',  images: ["images/.jpg"],  narrative: "" }
+  { label: 'Unknown',  images: ["images/.jpg"],  narrative: "" } 
 ];
 
 const lightbox = document.getElementById('lightbox');
