@@ -18,5 +18,13 @@
             <p>{{ $activity->description }}</p>
         </div>
     </div>
+
+    <form action="{{ route('activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('You sure you want to delete this?');">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="px-6 py-3 bg-red-600 text-white rounded text-sm font-semibold hover:bg-red-700 transition">
+        Delete Activity
+    </button>
+    </form>
 </body>
 </html>

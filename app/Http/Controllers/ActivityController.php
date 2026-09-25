@@ -24,13 +24,13 @@ class ActivityController extends Controller
     {
         Activity::create($request->validated());
 
-        return redirect()->route('activities.index')->with('success', 'Aktivitas berhasil ditambahkan!');
+        return redirect()->route('activities.index')->with('success', 'New activity has been added');
     }
 
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
         $activity->update($request->validated());
-        return redirect()->route('activities.index')->with('success', 'Aktivitas berhasil diperbarui!');
+        return redirect()->route('activities.index')->with('success', 'New activity has been updated');
     }
 
     public function create()
