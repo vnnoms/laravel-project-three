@@ -32,5 +32,21 @@ class ActivitySeeder extends Seeder
             'category' => 'Website Development',
             'status' => 'Done',
         ]);
+
+        Activity::create([
+            'title' => 'Laravel Framework Introduction',
+            'description' => 'Using framework for making easy web developer',
+            'activity_date' => '2026-09',
+            'category' => 'Website Development',
+            'status' => 'On-going',
+        ]);
+
+        Activity::create([
+            'title' => 'Database Migrate with SQLite',
+            'description' => 'For providing the data from the database',
+            'activity_date' => '2026-09',
+            'category' => 'Website Development',
+            'status' => 'On-going',
+        ]);
     }
 }
