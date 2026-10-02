@@ -81,7 +81,7 @@
 
       <select name="status" class="border border-gray-300 rounded p-2 text-sm">
           <option value="">Semua status</option>
-          @foreach (['draft', 'published', 'completed'] as $status)
+          @foreach (['draft', 'published', 'completed'] as $status)@foreach ($statuses as $status)
               <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
           @endforeach
       </select>
@@ -102,6 +102,7 @@
               <h1 class="text-4xl font-serif font-bold">Archive</h1>
               <p class="text-sm text-zinc-500 mt-1">A curated log of development milestones and projects.</p>
           </div>
+              <a href="{{ route('activities.trash') }}" class="btn-edit">Trash</a>
               <a href="{{ route('activities.create') }}" class="btn-add-activity">
                   + Add New Activity
               </a>
@@ -128,7 +129,7 @@
         <div class="contact-meta">
           <a href="mailto:callista.rahma.tif25@polban.ac.id">callista.rahma.tif25@polban.ac.id</a>
           <a href="https://instagram.com/vnnoms">@vnnoms on Instagram</a>
-          <a href="#">Ciwaruga, Bandun</a>
+          <a href="#">Ciwaruga, Bandung</a>
         </div>
       </div>
     </section>

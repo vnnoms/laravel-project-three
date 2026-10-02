@@ -16,7 +16,7 @@ class Category extends Model
 
     public function isInUse(): bool
     {
-        return $this->activities()->exists();
+        return $this->activities()->withTrashed()->exists();
     }
 
     public function scopeOrdered($query)
