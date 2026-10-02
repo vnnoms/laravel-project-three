@@ -8,17 +8,20 @@ class StoreActivityRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; 
+        return true;
     }
 
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:5|max:100', 
-            'description' => 'required|string',
-            'activity_date' => 'required|date',
-            'category' => 'required|string|max:100',
-            'status' => 'required|string|in:Done,On-going,Planned', 
+            'category_id' => ['required', 'exists:categories,id'],
+            'code'        => ['required', 'string', 'max:30', 'unique:activities,code'],
+            'title'       => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string'],
+            'start_at'    => ['nullable', 'date', 'required_with:end_at'],
+            'end_at'      => ['nullable', 'date', 'after_or_equal:start_at'],
+            'location'    => ['nullable', 'string', 'max:150'],
+            'capacity'    => ['nullable', 'integer', 'min:1', 'max:500'],
         ];
     }
 }

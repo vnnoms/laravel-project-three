@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name', 'Callista') }}</title>
         <meta charset="UTF-8">
+        @include('partials.alerts')
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,6 +68,33 @@
       </div>
     </section>
 
+    <form method="GET" action="{{ route('activities.index') }}" class="flex flex-wrap gap-3 mb-6">
+      <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari judul / kode"
+            class="border border-gray-300 rounded p-2 text-sm">
+
+      <select name="category_id" class="border border-gray-300 rounded p-2 text-sm">
+          <option value="">Semua kategori</option>
+          @foreach ($categories as $category)
+              <option value="{{ $category->id }}" @selected(request('category_id') == $category->id)>{{ $category->name }}</option>
+          @endforeach
+      </select>
+
+      <select name="status" class="border border-gray-300 rounded p-2 text-sm">
+          <option value="">Semua status</option>
+          @foreach (['draft', 'published', 'completed'] as $status)
+              <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
+          @endforeach
+      </select>
+
+      <select name="sort" class="border border-gray-300 rounded p-2 text-sm">
+          <option value="latest" @selected(request('sort', 'latest') === 'latest')>Terbaru</option>
+          <option value="oldest" @selected(request('sort') === 'oldest')>Terlama</option>
+      </select>
+
+      <button type="submit" class="btn-add-activity">Terapkan</button>
+      <a href="{{ route('activities.index') }}" class="btn-edit">Reset</a>
+</form>
+
     <section id="archive">
       <div class="section-head">
         <div class="flex justify-between items-center mb-8">
@@ -81,17 +109,18 @@
         <span class="label">Activity Log</span>
       </div>
           <div class="archive-grid" id="archiveGrid">
-       @forelse($activities as $activity)
-          <a href="{{ route('activities.show', $activity->id) }}" class="archive-item" style="color: white;">
-              <h3>{{ $activity->title }}</h3>
-              <p>{{ $activity->description }}</p>
-              <span>{{ $activity->activity_date->format('d M Y') }} — {{ $activity->status }}</span>
-          </a>
-      @empty
-          <p>Belum ada aktivitas.</p>
-      @endforelse
-    </div>
-    </section>
+            @forelse ($activities as $activity)
+                <a href="{{ route('activities.show', $activity->id) }}" class="archive-item" style="color: white;">
+                    <h3>{{ $activity->title }}</h3>
+                    <p>{{ $activity->description }}</p>
+                    <span>{{ $activity->start_at?->format('d M Y') ?? '—' }} — {{ $activity->status }}</span>
+                </a>
+            @empty
+                <p>Belum ada aktivitas.</p>
+            @endforelse
+        </div>
+
+<div class="mt-6">{{ $activities->links() }}</div>
 
     <section id="contact">
       <div class="contact">

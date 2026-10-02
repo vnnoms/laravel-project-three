@@ -18,4 +18,9 @@ class Category extends Model
     {
         return $this->activities()->exists();
     }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('name');
+    }
 }

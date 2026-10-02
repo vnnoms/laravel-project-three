@@ -23,52 +23,16 @@
     <main class="py-4">
       <h1 class="text-4xl font-serif font-bold mb-6">Edit Aktivitas</h1>
 
-      {{-- Tampilkan error validasi jika ada --}}
-      @if ($errors->any())
-          <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded text-sm">
-              <ul class="list-disc pl-5">
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
+      @include('partials.alerts')
 
-      <form action="{{ route('activities.update', $activity->id) }}" method="POST" class="space-y-6">
+      <form action="{{ route('activities.update', $activity) }}" method="POST" class="space-y-6">
           @csrf
           @method('PUT')
 
-          <div>
-              <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Judul Aktivitas</label>
-              <input type="text" name="title" value="{{ old('title', $activity->title) }}" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-black">
-          </div>
-
-          <div>
-              <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Kategori</label>
-              <input type="text" name="category" value="{{ old('category', $activity->category) }}" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-black">
-          </div>
-
-          <div>
-                <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Activity Date</label>
-                value="{{ old('activity_date', $activity->activity_date?->format('Y-m-d')) }}"
-          </div>
-
-          <div>
-              <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Status</label>
-              <select name="status" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-black bg-white">
-                  <option value="Done" {{ $activity->status == 'Done' ? 'selected' : '' }}>Done</option>
-                  <option value="On-going" {{ $activity->status == 'On-going' ? 'selected' : '' }}>On-going</option>
-                  <option value="Planned" {{ $activity->status == 'Planned' ? 'selected' : '' }}>Planned</option>
-              </select>
-          </div>
-
-          <div>
-              <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Deskripsi</label>
-              <textarea name="description" rows="4" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-black">{{ old('description', $activity->description) }}</textarea>
-          </div>
+          @include('partials.activity-form-fields')
 
           <div class="flex justify-end gap-4 pt-4">
-              <a href="/" class="px-6 py-3 border border-gray-300 rounded text-sm font-semibold hover:bg-gray-100 transition">Batal</a>
+              <a href="{{ route('activities.show', $activity) }}" class="px-6 py-3 border border-gray-300 rounded text-sm font-semibold hover:bg-gray-100 transition">Batal</a>
               <button type="submit" class="px-6 py-3 bg-black text-white rounded text-sm font-semibold hover:bg-gray-800 transition">Perbarui Aktivitas</button>
           </div>
       </form>
