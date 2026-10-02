@@ -49,8 +49,8 @@
           </div>
 
           <div>
-              <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Tanggal Aktivitas</label>
-              <input type="date" name="activity_date" value="{{ old('activity_date', $activity->activity_date) }}" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-black">
+                <label class="block text-sm font-semibold uppercase tracking-wider mb-2">Activity Date</label>
+                value="{{ old('activity_date', $activity->activity_date?->format('Y-m-d')) }}"
           </div>
 
           <div>

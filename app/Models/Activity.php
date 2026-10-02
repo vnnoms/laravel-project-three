@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $fillable = ['title', 'description', 'activity_date', 'category', 'status'];
+    protected $fillable = [
+    'category_id', 'code', 'title', 'description', 'activity_date', 'status',
+    ];
     protected $casts = [
         'activity_date' => 'date',
     ];
+
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }   
 }

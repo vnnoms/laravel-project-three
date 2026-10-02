@@ -13,42 +13,46 @@ class ActivitySeeder extends Seeder
     public function run(): void
     {
         Activity::create([
-            'title' => 'Creating Website Portfolio',
-            'description' => 'Using html for basic structure',
-            'activity_date' => '2026-09',
-            'category' => 'Website Programming',
-            'status' => 'Done',
+            'category_id'   => 1,
+            'code'          => 'ACT-001',
+            'title'         => 'Belajar Laravel Dasar',
+            'description'   => 'Latihan CRUD dasar.',
+            'activity_date' => '2026-10-10',
+            'status'        => 'Planned',
         ]);
-
         Activity::create([
+            'category_id' => 2,
+            'code' => 'ACT-002',
             'title' => 'Styling Website Portfolio',
             'description' => 'Using css for styling and layout to enhance the current html structure',
             'activity_date' => '2026-09',
-            'category' => 'Website Development',
             'status' => 'Done',
         ]);
 
         Activity::create([
+            'category_id' => 3,
+            'code' => 'ACT-003',
             'title' => 'Interactivity Website Portfolio',
             'description' => 'Using javascript for user interactivity',
             'activity_date' => '2026-09',
-            'category' => 'Website Development',
             'status' => 'Done',
         ]);
 
         Activity::create([
+            'category_id' => 4,
+            'code' => 'ACT-004',
             'title' => 'Laravel Framework Introduction',
             'description' => 'Using framework for making easy web developer',
             'activity_date' => '2026-09',
-            'category' => 'Website Development',
             'status' => 'On-going',
         ]);
 
         Activity::create([
+            'category_id' => 5,
+            'code' => 'ACT-005',
             'title' => 'Database Migrate with SQLite',
             'description' => 'For providing the data from the database',
             'activity_date' => '2026-09',
-            'category' => 'Website Development',
             'status' => 'On-going',
         ]);
     }

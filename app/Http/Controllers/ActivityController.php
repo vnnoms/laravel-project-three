@@ -30,7 +30,7 @@ class ActivityController extends Controller
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
         $activity->update($request->validated());
-        return redirect()->route('activities.index')->with('success', 'New activity has been updated');
+        return redirect()->route('activities.index')->with('success', 'Activity has been updated');
     }
 
     public function create()
