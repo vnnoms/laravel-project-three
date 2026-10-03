@@ -57,7 +57,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+
+
 # Activity Manager — Laravel CRUD Portfolio
+Nama: Callista Rahma Putri
+Kelas: 2A-D3
+NIM: 251511004
 
 Aplikasi manajemen aktivitas dan portofolio berbasis web yang dikembangkan menggunakan framework Laravel untuk memenuhi tugas praktikum Pemrograman Web (Modul 3).
 
@@ -87,3 +92,66 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal di komp
    ```bash
    git clone [https://github.com/username/activity-manager.git](https://github.com/username/activity-manager.git)
    cd activity-manager
+
+# Laravel Project 3 — Activity Management
+
+Project ini merupakan implementasi CRUD Activity menggunakan Laravel dengan fokus pada **Relational CRUD, Data Integrity, Business Rule, Query Experience, Data Lifecycle, Storage, dan Static Analysis**.
+
+## 📌 Deskripsi
+
+Aplikasi digunakan untuk mengelola data kegiatan (Activity) yang terhubung dengan kategori (Category).
+
+Project ini tidak hanya menerapkan CRUD dasar, tetapi juga menerapkan:
+
+- Relasi `Category` dan `Activity`
+- Foreign Key dan Referential Integrity
+- Unique Constraint
+- Form Request Validation
+- Business Rule pada Service
+- Search, Filter, Sort, dan Pagination
+- Soft Delete dan Restore
+- Eager Loading untuk mencegah N+1 Query
+- Upload dan penggantian poster
+- Static Analysis menggunakan SonarCloud
+
+---
+
+## 🛠️ Teknologi
+
+- PHP
+- Laravel
+- SQLite
+- Blade
+- Eloquent ORM
+- Laravel Storage
+- SonarCloud
+- Git & GitHub
+
+---
+
+## 📂 Struktur Utama
+
+```text
+app/
+├── Http/
+│   ├── Controllers/
+│   │   └── ActivityController.php
+│   └── Requests/
+│       ├── StoreActivityRequest.php
+│       └── UpdateActivityRequest.php
+│
+├── Models/
+│   ├── Activity.php
+│   └── Category.php
+│
+└── Services/
+    └── ActivityService.php
+
+database/
+├── migrations/
+└── seeders/
+
+resources/
+└── views/
+    ├── activities/
+    └── partials/

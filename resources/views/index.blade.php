@@ -80,10 +80,10 @@
       </select>
 
       <select name="status" class="border border-gray-300 rounded p-2 text-sm">
-          <option value="">Semua status</option>
-          @foreach (['draft', 'published', 'completed'] as $status)@foreach ($statuses as $status)
-              <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
-          @endforeach
+        <option value="">Semua status</option>
+        @foreach ($statuses as $status)
+            <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst($status) }}</option>
+        @endforeach
       </select>
 
       <select name="sort" class="border border-gray-300 rounded p-2 text-sm">
