@@ -3,7 +3,10 @@
 namespace App\Services;
 
 use App\Models\Activity;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class ActivityService
 {
@@ -16,6 +19,42 @@ class ActivityService
         'end_at'      => 'tanggal selesai',
         'capacity'    => 'kapasitas',
     ];
+
+    public function create(array $data, ?UploadedFile $poster = null): Activity
+    {
+        if ($poster) {
+            $data['poster_path'] = $poster->store('posters', 'public');
+        }
+
+        return Activity::create($data);
+    }
+
+    public function update(Activity $activity, array $data, ?UploadedFile $poster = null): Activity
+    {
+        $oldPath = $activity->poster_path;
+        $newPath = null;
+
+        if ($poster) {
+            $newPath = $poster->store('posters', 'public');
+            $data['poster_path'] = $newPath;
+        }
+
+        try {
+            $activity->update($data);
+        } catch (Throwable $e) {
+            if ($newPath) {
+                Storage::disk('public')->delete($newPath);
+            }
+
+            throw $e;
+        }
+
+        if ($newPath && $oldPath) {
+            Storage::disk('public')->delete($oldPath);
+        }
+
+        return $activity;
+    }
 
     public function publish(Activity $activity): Activity
     {

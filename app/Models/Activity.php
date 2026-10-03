@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Activity extends Model
 {
@@ -23,8 +24,20 @@ class Activity extends Model
 
     protected $fillable = [
         'category_id', 'code', 'title', 'description',
-        'start_at', 'end_at', 'location', 'capacity', 'status',
+        'start_at', 'end_at', 'location', 'capacity',
+        'poster_path', 'status',
     ];
+
+    protected static function booted(): void
+    {
+        // Kebijakan force delete: file poster ikut dihapus HANYA saat record dihapus permanen.
+        // Soft delete tidak menyentuh file, supaya restore tetap menampilkan poster.
+        static::forceDeleted(function (Activity $activity) {
+            if ($activity->poster_path) {
+                Storage::disk('public')->delete($activity->poster_path);
+            }
+        });
+    }
 
     protected function casts(): array
     {
@@ -37,6 +50,11 @@ class Activity extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function posterUrl(): ?string
+    {
+        return $this->poster_path ? asset('storage/' . $this->poster_path) : null;
     }
 
     public function scopeSearch($query, ?string $keyword)

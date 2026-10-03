@@ -46,7 +46,10 @@ class ActivityController extends Controller
 
     public function store(StoreActivityRequest $request)
     {
-        Activity::create($request->validated());
+        $this->activityService->create(
+            $request->safe()->except('poster'),
+            $request->file('poster')
+        );
 
         return redirect()->route('activities.index')->with('success', 'New activity has been added');
     }
@@ -60,7 +63,11 @@ class ActivityController extends Controller
 
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        $activity->update($request->validated());
+        $this->activityService->update(
+            $activity,
+            $request->safe()->except('poster'),
+            $request->file('poster')
+        );
 
         return redirect()->route('activities.index')->with('success', 'Activity has been updated');
     }

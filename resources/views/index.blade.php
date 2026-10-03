@@ -111,15 +111,19 @@
       </div>
           <div class="archive-grid" id="archiveGrid">
             @forelse ($activities as $activity)
-                <a href="{{ route('activities.show', $activity->id) }}" class="archive-item" style="color: white;">
-                    <h3>{{ $activity->title }}</h3>
-                    <p>{{ $activity->description }}</p>
-                    <span>{{ $activity->start_at?->format('d M Y') ?? '—' }} — {{ $activity->status }}</span>
-                </a>
-            @empty
-                <p>Belum ada aktivitas.</p>
-            @endforelse
-        </div>
+                  <a href="{{ route('activities.show', $activity->id) }}" class="archive-item" style="color: white;">
+                      @if ($activity->poster_path)
+                          <img src="{{ $activity->posterUrl() }}" alt="{{ $activity->title }}" loading="lazy">
+                      @endif
+                      <h3>{{ $activity->title }}</h3>
+                      <p>{{ $activity->description }}</p>
+                      <span>{{ $activity->start_at?->format('d M Y') ?? '—' }} — {{ $activity->status }}</span>
+                  </a>
+              @empty
+                  <p>Belum ada aktivitas.</p>
+              @endforelse
+          </div>
+    </section>
 
 <div class="mt-6">{{ $activities->links() }}</div>
 

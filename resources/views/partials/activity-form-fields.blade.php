@@ -16,7 +16,7 @@
 
 <div>
     <label class="{{ $label }}">Kode Kegiatan</label>
-    <input type="text" name="code" value="{{ old('code', $a?->code) }}" required class="{{ $input }}">
+    <input type="text" name="code" value="{{ old('code', $a?->code) }}" required class="{{ $input }}" placeholder="Contoh: ACT-016">
 </div>
 
 <div>
@@ -42,6 +42,15 @@
 <div>
     <label class="{{ $label }}">Kapasitas (1–500)</label>
     <input type="number" name="capacity" min="1" max="500" value="{{ old('capacity', $a?->capacity) }}" class="{{ $input }}">
+</div>
+
+<div>
+    <label class="{{ $label }}">Poster (opsional, maks. 2 MB)</label>
+    @if ($a?->poster_path)
+        <img src="{{ $a->posterUrl() }}" alt="Poster saat ini" class="w-40 rounded mb-3 border border-gray-200">
+        <p class="text-xs text-gray-500 mb-2">Pilih file baru hanya jika ingin mengganti poster.</p>
+    @endif
+    <input type="file" name="poster" accept="image/jpeg,image/png,image/webp" class="{{ $input }}">
 </div>
 
 <div>

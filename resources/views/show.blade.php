@@ -20,6 +20,9 @@
 
         <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-lg shadow-xl">
             <a href="{{ route('activities.index') }}" class="text-sm text-zinc-400 hover:text-white mb-6 inline-block">&larr; Back to Archive</a>
+            @if ($activity->poster_path)
+                <img src="{{ $activity->posterUrl() }}" alt="Poster {{ $activity->title }}" class="w-full max-h-96 object-cover rounded-lg mb-6">
+            @endif
 
             <div class="flex items-center gap-2">
                 <span class="text-xs uppercase tracking-wider bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded border border-zinc-700">{{ $activity->category->name }}</span>
